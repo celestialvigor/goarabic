@@ -192,7 +192,7 @@ func ToGlyph(text string) string {
 
 //returns the first non-tashkeel rune
 func getPrevChar(s []rune) rune {
-	for i := len(s); i > 0; i-- {
+	for i := len(s) - 1; i > 0; i-- {
 		r := s[i]
 		if !tashkeel[r] {
 			return r
