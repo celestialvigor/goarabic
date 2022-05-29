@@ -194,7 +194,7 @@ func ToGlyph(text string) string {
 func getPrevChar(s []rune) rune {
 	for i := len(s) - 1; i > 0; i-- {
 		r := s[i]
-		if !tashkeel[r] {
+		if !tashkeel[r] || r == ' ' {
 			return r
 		}
 	}
@@ -204,7 +204,7 @@ func getPrevChar(s []rune) rune {
 //returns the first non-tashkeel rune
 func getNextChar(s []rune) rune {
 	for _, char := range s {
-		if !tashkeel[char] {
+		if !tashkeel[char] || char == ' ' {
 			return char
 		}
 	}
