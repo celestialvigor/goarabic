@@ -168,14 +168,14 @@ func ToGlyph(text string) string {
 	for i, current := range runes {
 		// get the previous char
 		if (i - 1) < 0 {
-			prev = getPrevChar(text[:i-1])
+			prev = 0
 		} else {
-			prev = runes[i-1]
+			prev = getPrevChar(runes[:i-1])
 		}
 
 		// get the next char
 		if (i + 1) <= length-1 {
-			next = getNextChar(text[i+1:])
+			next = getNextChar(runes[i+1:])
 		} else {
 			next = 0
 		}
@@ -191,10 +191,9 @@ func ToGlyph(text string) string {
 }
 
 //returns the first non-tashkeel rune
-func getPrevChar(s string) rune {
-	strRunes := []rune(s)
-	for i := len(strRunes); i > 0; i-- {
-		r := strRunes[i]
+func getPrevChar(s []rune) rune {
+	for i := len(s); i > 0; i-- {
+		r := s[i]
 		if !tashkeel[r] {
 			return r
 		}
@@ -203,7 +202,7 @@ func getPrevChar(s string) rune {
 }
 
 //returns the first non-tashkeel rune
-func getNextChar(s string) rune {
+func getNextChar(s []rune) rune {
 	for _, char := range s {
 		if !tashkeel[char] {
 			return char
