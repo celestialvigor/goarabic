@@ -175,7 +175,7 @@ func ToGlyph(text string) string {
 
 		// get the next char
 		if (i + 1) <= length-1 {
-			next = runes[i+1]
+			next = getNextChar(text[i+1:])
 		} else {
 			next = 0
 		}
@@ -188,6 +188,16 @@ func ToGlyph(text string) string {
 	}
 
 	return string(newText)
+}
+
+//returns the first non-tashkeel rune
+func getNextChar(s string) rune {
+	for _, char := range s {
+		if !tashkeel[char] {
+			return char
+		}
+	}
+	return 0
 }
 
 // RemoveTashkeel returns its argument as rune-wise string without Arabic vowels (Tashkeel).
