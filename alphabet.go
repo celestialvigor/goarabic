@@ -323,9 +323,9 @@ var (
 		Final:     '\u0640'}
 
 	LAM_ALEF = Harf{ // لا
-		Unicode:   '\uFEFB',
-		Isolated:  '\uFEFB',
-		Beggining: '\uFEFB',
+		Unicode:   '\ufefb',
+		Isolated:  '\ufefb',
+		Beggining: '\ufefb',
 		Medium:    '\ufefc',
 		Final:     '\ufefc'}
 
